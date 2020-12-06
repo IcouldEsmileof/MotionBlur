@@ -1,3 +1,0 @@
-﻿D:\VisualStudio\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Upr_01.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  main.cpp
-  Upr_01.vcxproj -> D:\Icould\KG\Upr_04\Upr_01\Debug\Motion_blur_1.exe
