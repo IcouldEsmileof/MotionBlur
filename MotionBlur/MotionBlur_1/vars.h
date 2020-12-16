@@ -27,5 +27,7 @@ bool top_view = false;
 bool motion_blur = false;
 int i = 0;
 bool just_changed = false;
-bool solid = false;
+bool solid = true;
 bool is_idle_synced = false;
+void(*draw)(GLfloat, GLfloat, GLfloat);
+bool is_cube = true;

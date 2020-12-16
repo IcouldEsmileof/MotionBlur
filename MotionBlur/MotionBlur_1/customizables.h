@@ -52,6 +52,19 @@ void handleKeypress(unsigned char key, //The key that was pressed
 			solid = !solid;
 			glutPostRedisplay();
 			break;
+		case 'f':
+			std::cout<<"button s pressed"<<std::endl;
+			is_cube = !is_cube;
+			if (is_cube)
+			{
+				draw = &draw_cube;
+			}
+			else
+			{
+				draw = &draw_sphere;
+			}
+			glutPostRedisplay();
+			break;
 		default: handleKeypress_common(key, x, y);
 	}
 }
@@ -64,31 +77,37 @@ void drawScene() {
 	glMatrixMode(GL_MODELVIEW); //Switch to the drawing perspective
 	glLoadIdentity(); //Reset the drawing perspective
 
+
 	if (view3person)
 	{
 		gluLookAt(10.0f, 0.0f, 0.0f,
 				  0.0f, 0.0f, 0.0f,
 				  0.0, 1.0, 0.0);
+
 	}
 	else if (top_view)
 	{
 		gluLookAt(0.0f, 20.0f, 0.0f,
 				  0.0f, 0.0f, 0.0f,
 				  1.0, 0.0, 0.0);
+
 	}
 	else
 	{
 		gluLookAt(0.0f, 0.0f, 0.0f,
 				  10.0f, 0.0f, 0.0f,
 				  0.0, 1.0, 0.0);
+
 	}
+
+	
 
 	glRotatef(sphereRotationAng, 0.0f, 1.0f, 0.0f);
 
 	glTranslatef(0.0f, 0.0f, 7.0f);
 
 	glColor3f(1.0f, 1.0f, 1.0f);
-	draw_sphere(1.5f, 100, 100);
+	draw(1.5f, 100, 100);
 
 	glTranslatef(0.0f, 0.0f, -7.0f);
 	glRotatef(-sphereRotationAng, 0.0f, 1.0f, 0.0f);

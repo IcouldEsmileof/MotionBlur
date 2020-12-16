@@ -14,11 +14,44 @@ GLfloat toRad(GLfloat ang) {
 }
 
 
+void draw_sphere(GLfloat radius, GLfloat slices, GLfloat stacks) {
+	if (solid)
+	{
+		glutSolidSphere(radius, slices, stacks);
+	}
+	else
+	{
+		glutWireSphere(radius, slices, stacks);
+	}
+}
+
+void draw_cube(GLfloat size, GLfloat a = -0, GLfloat b = 0) {
+	if (solid)
+	{
+		glutSolidCube(size);
+	}
+	else
+	{
+		glutWireCube(size);
+	}
+}
+
+
+/*-------------------------------------------------OpenGL-------------------------------------------------*/
+
 //Initializes 3D rendering
 void initRendering() {
 	//Makes 3D drawing work when something is in front of something else
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
+	if (is_cube)
+	{
+		draw = &draw_cube;
+	}
+	else
+	{
+		draw = &draw_sphere;
+	}
 }
 
 
@@ -48,13 +81,3 @@ void handleKeypress_common(unsigned char key, //The key that was pressed
 	}
 }
 
-void draw_sphere(GLfloat radius, GLfloat slices, GLfloat stacks) {
-	if (solid)
-	{
-		glutSolidSphere(radius, slices, stacks);
-	}
-	else
-	{
-		glutWireSphere(radius, slices, stacks);
-	}
-}
